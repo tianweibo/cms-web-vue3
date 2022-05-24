@@ -13,9 +13,17 @@ const Storage = {
       return undefined;
     }
     const value = this.getStorage(isSession).getItem(KEY_PREFIX + key);
-    if (value) return JSON.parse(value);
+    if (value) {
+      try {
+        return JSON.parse(value);
+      } catch (error) {
+        return value;
+      }
+    }
+
     return undefined;
   },
+ // eslint-disable-next-line @typescript-eslint/no-explicit-any
   set(key: string, value: any, isSession?: boolean) {
     if (!this.isLocalStorage()) {
       return undefined;
@@ -29,6 +37,7 @@ const Storage = {
     this.getStorage(isSession).removeItem(KEY_PREFIX + key);
     return true;
   },
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   removeAll(keys: any = []) {
     keys.concat(["TOKEN"]).forEach((item: string) => this.remove(item));
   },

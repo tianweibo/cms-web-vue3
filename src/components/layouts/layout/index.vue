@@ -1,13 +1,13 @@
 <template>
   <a-layout class="layout">
-    <a-layout-header> <Header @changeMenu="changeMenu" /> </a-layout-header>
+    <a-layout-header v-if="isShowMenu"> <Header @changeMenu="changeMenu" /> </a-layout-header>
     <a-layout>
-      <a-layout-sider width="200px" v-if="menuList && menuList.length">
-        <MenuLeft :menulist="menuList" />
+      <a-layout-sider v-if="isShowMenu">
+        <MenuLeft :menulist="leftMenu" />
       </a-layout-sider>
-      <a-layout-content id="main-layout-content">
+      <a-layout-content>
         <div class="page-box">
-          <Breadcrumb></Breadcrumb>
+          <Breadcrumb v-if="false"></Breadcrumb>
           <router-view />
         </div>
       </a-layout-content>
@@ -16,20 +16,32 @@
 </template>
 
 <script lang="ts">
-import { ref } from "vue";
+import { reactive, computed, onMounted, ref } from "vue";
 import MenuLeft from "@/components/layouts/menuLeft/index.vue";
 import Header from "@/components/layouts/header/index.vue";
+import { useRoute } from "vue-router";
 
 export default {
   components: { Header, MenuLeft },
   setup() {
-    const menuList: any = ref([]);
-    const changeMenu = (row: any) => {
-      menuList.value = row.children;
+    const isShowMenu = ref(false);
+    const leftMenu: any = reactive([]);
+    const changeMenu = function(menu: any) {
+      leftMenu.splice.apply(leftMenu, [0, leftMenu.length, ...menu]);
     };
+
+    const route = useRoute();
+    const key = computed(() => (route.path !== void 0 ? `${route.path}${new Date()}` : new Date()));
+
+    onMounted(() => {
+      let storage = localStorage.getItem("isShowMenu") === "1";
+      isShowMenu.value = storage;
+    });
     return {
-      menuList,
-      changeMenu
+      leftMenu,
+      changeMenu,
+      key,
+      isShowMenu
     };
   }
 };
@@ -40,6 +52,7 @@ export default {
 }
 
 .layout {
+  min-width: 1200px;
   height: 100%;
 
   .header-box {

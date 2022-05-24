@@ -9,13 +9,13 @@ module.exports = {
   },
   rules: {
     "@typescript-eslint/no-explicit-any": ["off"],
+    "@typescript-eslint/no-unused-vars": ["off"],
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
     "prefer-const": "off",
     "no-unused-expressions": 0,
     "@typescript-eslint/no-var-requires": 0,
     "no-unused-vars": 0,
-    "vue/script-setup-uses-vars": "off",
     "@typescript-eslint/interface-name-prefix": 0
   },
   overrides: [

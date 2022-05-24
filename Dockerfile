@@ -1,3 +1,3 @@
-FROM alpine:3.5
-ADD dist/index.html /data/index.html
-CMD ["tail", "-f", "/dev/null"]
+FROM dockerhub.enbrands.com/devops/nginx:1.16.0
+ADD health.sh /health.sh
+ADD dist /data/html

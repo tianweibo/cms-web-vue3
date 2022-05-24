@@ -2,49 +2,51 @@
  * @Description:
  * @Author: liudehua
  * @Date: 2021-02-07 15:29:30
- * @LastEditTime: 2022-05-13 15:08:09
+ * @LastEditTime: 2021-04-01 15:43:36
  * @LastEditors: Please set LastEditors
  */
 import router from "./router";
+import NProgress from 'nprogress'
 import { getToken } from "@/utils/auth";
 import store from "./store";
 
-const nextAction = (next: Function, str?: string) => {
-  store.commit("common/SET_ROUTE_FINISH");
-  next(str);
-};
+const whiteList = ['/login', '/auth-redirect'] // no redirect whitelist
 
-const whiteList = ["/login", "/401"];
-router.beforeEach(async (to: any, _: any, next: any) => {
-  if (to.path == "/login") return next();
-  if (to.path == "/") return nextAction(next, "/login");
-  if (whiteList.find(item => to.name === item)) return nextAction(next);
-  const hasToken = getToken();
-  const hasRoles = store.getters.route && store.getters.route.path;
+router.beforeEach(async(to: any, _: any, next: any) => {
+  NProgress.start()
+  const hasToken = getToken()
+  const hasRoles = store.getters.roles && store.getters.roles.length > 0
   if (hasToken && hasRoles) {
-    if (to.meta.title) document.title = to.meta.title;
-    next();
+    if (to.path === '/login') {
+      next({ path: '/app' })
+      NProgress.done()
+    } else {
+      next()
+    }
   } else if (hasToken && !hasRoles) {
     try {
-      await store.dispatch("user/genUserInfo"); // genUserInfo内部将更新路由
-      await store.dispatch("permission/generateRoutes");
-      router.addRoute(store.getters.route);
-      // 获取记录路由是否存在当前登录用户的路由权限中
-      const route = router.getRoutes().find((item: any) => {
-        return to.name ? item.name == to.name : item.path == to.path;
-      });
-      route ? next(to.path) : next("/login");
+      await store.dispatch('user/genUserInfo') // genUserInfo内部将更新路由
+      next({ ...to, replace: true })
     } catch (err) {
-      await store.dispatch("user/logout");
-      next(`/login?redirect=${to.path}`);
+      await store.dispatch('user/logout')
+      next(`/login?redirect=${to.path}`)
+      NProgress.done()
     }
   } else if (!hasToken) {
     if (whiteList.indexOf(to.path) !== -1) {
       // in the free login whitelist, go directly
-      next();
+      next()
     } else {
       // other pages that do not have permission to access are redirected to the login page.
-      next(`/login?redirect=${to.path}`);
+      next(`/login?redirect=${to.path}`)
+      NProgress.done()
     }
   }
+  // if (to.path === "/") {
+  //   NProgress.done()
+  //   return next("/login");
+  // }
+  // if (to.meta.title) document.title = to.meta.title;
+  // next();
+  // NProgress.done()
 });

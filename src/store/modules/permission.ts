@@ -1,29 +1,18 @@
-import { initRoute } from "@/router/util";
+/*
+ * @Description:
+ * @Author: liudehua
+ * @Date: 2021-02-07 15:49:43
+ * @LastEditTime: 2021-04-02 09:00:10
+ * @LastEditors: Please set LastEditors
+ */
 
 const state = {
-  // 是否需要权限控制
-  isPermission: false,
-  isAddRouteStatus: false,
-  route: {}
+  routes: []
 };
 
-const mutations = {
-  SET_ROUTES: (state: any, route: any) => {
-    state.route = route;
-  }
-};
+const mutations = {};
 
-const actions = {
-  generateRoutes(content: any) {
-    return new Promise<void>(resolve => {
-      let accessedRoutes: any = [];
-      accessedRoutes = initRoute();
-      content.state.isAddRouteStatus = true;
-      content.commit("SET_ROUTES", accessedRoutes);
-      resolve();
-    });
-  }
-};
+const actions = {};
 
 export default {
   namespaced: true,

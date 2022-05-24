@@ -19,7 +19,9 @@
         </a>
         <template #overlay>
           <a-menu @click="handleUser">
-            <a-menu-item key="exit"> 退出 </a-menu-item>
+            <a-menu-item key="exit">
+              退出
+            </a-menu-item>
           </a-menu>
         </template>
       </a-dropdown>
@@ -29,9 +31,9 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref } from "vue";
-import { useRoute, useRouter, onBeforeRouteUpdate } from "vue-router";
-import { DownOutlined } from "@ant-design/icons-vue";
 import Route from "@/utils/route";
+import { useRoute, useRouter } from "vue-router";
+import { DownOutlined } from "@ant-design/icons-vue";
 import store from "@/store";
 
 export default defineComponent({
@@ -45,33 +47,21 @@ export default defineComponent({
     // 获取导航菜单
     const routeList = reactive(Route.getMenuList());
     // 获取当前主导航菜单子菜单
-    const getMenuData = (to?: any) => {
-      return routeList.find((item: any) => {
-        return to
-          ? to.path.split("/")[2] == item.path.split("/")[2]
-          : route.path.split("/")[2] == item.path.split("/")[2];
-      });
-    };
+    const menuData = routeList.find((item: any) => {
+      return route.path.includes(item.path);
+    });
     const handleMenu = function(row: any, type?: number) {
       if (row) {
         // 修改子集菜单
-        if (selectedKeys.value[0] !== row.name) {
-          ctx.emit("changeMenu", row);
-          selectedKeys.value = [row.name];
-        }
-      } else {
-        ctx.emit("changeMenu", {});
-        selectedKeys.value = [];
+        ctx.emit("changeMenu", row.children);
+        selectedKeys.value = [row.name];
       }
       // 菜单点击
       if (type) {
         router.replace({ name: row.name });
       }
     };
-    handleMenu(getMenuData());
-    onBeforeRouteUpdate(to => {
-      handleMenu(getMenuData(to));
-    });
+    handleMenu(menuData);
     const handleUser = (row: { key: string }) => {
       if (row.key === "exit") {
         store.dispatch("user/logout").then(async () => {
@@ -81,7 +71,7 @@ export default defineComponent({
       }
     };
 
-    return { name, routeList, selectedKeys, handleMenu, handleUser };
+    return { name, menuData, routeList, selectedKeys, handleMenu, handleUser };
   }
 });
 </script>

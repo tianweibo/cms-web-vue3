@@ -34,6 +34,7 @@ export default defineComponent({
 });
 </script>
 <style lang="less" scoped>
+//选中菜单右侧选中的竖线样式
 .mr-5 {
   margin-right: 5px;
 }

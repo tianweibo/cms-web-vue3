@@ -1,3 +1,4 @@
+ /* eslint-disable */
 import axios from "axios";
 import { message } from "ant-design-vue";
 import qs from "qs";
@@ -7,21 +8,23 @@ const config = require("./config");
 // 创建 axios 实例
 const service = axios.create({
   baseURL: config.api, // url = base url + request url
+  // baseURL: '/api',
   timeout: 10000 // request timeout
 });
 // 响应成功
 function responseSuccess(response: Record<string, any>) {
   if (response && (response.status === 200 || response.status === 304)) {
-    if (response.data && response.data.retCode === 0) {
+    if ((response.data && response.data.retcode === 0) || (response.data && response.data.code)) {
       return response.data;
     } else {
-      message.error(response.data.retMsg);
-      return;
+      message.error(response.data.errmsg);
+      return response;
     }
   } else {
+    console.log("response", response);
     // 异常状态下，把错误信息返回去
-    if (response && response.data && response.data.retMsg) {
-      message.error(response.data.retMsg);
+    if (response && response.data && response.data.errmsg) {
+      message.error(response.data.errmsg);
       return;
     } else if (response && response.status === 404) {
       message.error("访问异常");
@@ -45,10 +48,7 @@ service.interceptors.request.use(
     config.headers["Content-Type"] = "application/json;charset=UTF-8";
     config.headers["Accept"] = "application/json";
     const token = storage.get("TOKEN") || null;
-    if (token) {
-      // 如果token不为null，否则传token给后台
-      config.headers["Token"] = token;
-    }
+    config.headers["authorization"] = token;
     const data = qs.parse(config.data);
     for (const key in data) {
       if (!data[key]) delete data[key];

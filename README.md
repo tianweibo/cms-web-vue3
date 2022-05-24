@@ -12,6 +12,8 @@ npm install
 
 ### 开发与构建
 
+开发环境下，为了便于调试，把菜单权限，可以打开，在浏览器的 localStorage 中，注入 isShowMenu=1
+
 ```serve
 开发环境代码运行
 npm run serve

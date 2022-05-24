@@ -1,0 +1,169 @@
+.content {
+    width: 100%;
+    height: 100%;
+    margin-top: 15px;
+  
+    .thephone {
+      position: relative;
+      width: 375px;
+      height: 667px;
+      margin: 100px 40px;
+      overflow: hidden;
+      background-size: 100%;
+      border: 1px solid #d3d9e6;
+  
+      .regular-close {
+        position: absolute;
+        top: 500px;
+        left: 50%;
+        margin-left:-10px;
+        cursor: pointer;
+        width:20px;
+        height:20px;
+        line-height: 15px;
+        text-align: center;
+        color: #fff;
+        border:1px solid #fff;
+        border-radius: 15px;
+      }
+  
+      .dialogContent {
+        position: relative;
+        z-index: 999;
+        width: 380px;
+        height: 640px;
+        overflow: hidden;
+        background: rgba(0, 0, 0, 0.7);
+        background-size: 100%;
+        background-repeat: no-repeat;
+      }
+      .dialogBack{
+        width:290px;
+        height:360px;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        position: relative;
+        margin-top:100px;
+        margin-left:45px;
+        overflow: hidden;
+      }
+      .tigerContent{
+        background-image: url(http://enbrands-2.oss-cn-shanghai.aliyuncs.com/user/44c2f7f9d77fff15b4800f137e563fa5.png);
+        background-size: 100%;
+        width:330px;
+        height:450px;
+        z-index:3;
+        position: absolute;
+        left:26px;
+        bottom:5px;
+      }
+      .thephone_rules {
+        position: absolute;
+        top: 5px;
+        right: 0px;
+        cursor: pointer;
+        background: #8b6c28;
+        padding: 1px 2px 1px 10px;
+        border-bottom-left-radius: 10px;
+        border-top-left-radius: 10px;
+      }
+  
+      .thephone_rotary {
+        position: absolute;
+        top: 100px;
+        left: 10px;
+        width: 300px;
+        height: 350px;
+        background: cornsilk;
+      }
+  
+      .thephone_btn1 {
+        position: absolute;
+        top: 500px;
+        left: 10px;
+      }
+  
+      .thephone_btn2 {
+        position: absolute;
+        top: 500px;
+        left: 260px;
+      }
+  
+      .btnStyle {
+        display: inline-block;
+        padding: 8px;
+        font-weight: 400;
+        white-space: nowrap;
+        text-align: center;
+        background: cornflowerblue;
+        border-radius: 4px;
+      }
+    }
+    .imgRegural{
+      border-radius: 4px 4px 4px 4px;
+      border: 1px solid #E7EAF4;
+      padding:10px;
+      .title{
+        float:left;
+        height: 110px;
+        line-height:110px;
+        margin-right:10px;
+      }
+      .theBox{
+        float:left;
+      }
+    }
+    .content_right {
+      position: relative;
+      /deep/ .ant-tabs-nav {
+        width: 100%;
+      }
+      /deep/ .ant-tabs {
+        //height: 100%;
+      }
+      /deep/ .ant-tabs-nav .ant-tabs-tab {
+        width: 25%;
+        text-align: center;
+        margin: 0px;
+        background: #e7eaf4;
+      }
+       /deep/ .tab-pane .ant-tabs-nav .ant-tabs-tab {
+        width: 11.1%;
+        text-align: center;
+        margin: 0px;
+        background: #e7eaf4;
+      }
+      /deep/ .tab-pane .ant-tabs-nav .ant-tabs-tab-active {
+        background: #fff;
+      }
+      /deep/ .ant-tabs-nav .ant-tabs-tab-active {
+        background: #fff;
+      }
+      /deep/ .ant-collapse-header{
+        padding-left:12px;
+      }
+      .formItem {
+        font-size: 12px;
+        color:#999;
+        .formItemDiv {
+          display: inline-block;
+          width: 50px;
+        }
+      }
+      .goSteop {
+        text-align: center;
+        margin-top:20px;
+      }
+      
+      width: calc(100% - 480px);
+      background: #fff;
+      height: 100%;
+      margin-left: 20px;
+      
+    }
+  }
+  
+  /deep/ .ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {
+    right:15px;
+    left:auto
+  }

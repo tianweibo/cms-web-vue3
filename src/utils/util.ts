@@ -1,3 +1,4 @@
+/* eslint-disabled */
 /*
  * @Description:
  * @Author: liudehua
@@ -13,6 +14,7 @@ const Util = {
    * @return {*}
    * @version: v0.0.1
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   deepCopyObj: function(obj: Record<string, any>, newobj: any = {}) {
     if (obj instanceof Array || typeof obj != "object") {
       return obj;
@@ -30,6 +32,7 @@ const Util = {
    * @return {*}
    * @version: v0.0.1
    */
+   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   copyObjValue: function(obj: any, copyObj: any): void {
     for (const attr in obj) {
       obj[attr] = copyObj[attr];

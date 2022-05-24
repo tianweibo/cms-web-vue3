@@ -1,26 +1,38 @@
-import router from "@/router";
-import store from "@/store";
+/*
+ * @Description:
+ * @Author: liudehua
+ * @Date: 2021-01-07 10:38:09
+ * @LastEditTime: 2021-03-12 14:18:43
+ * @LastEditors: liudehua
+ */
+import { useRouter } from "vue-router";
 
 const Route = {
-  setMenuList(routeArr: any, routeList: any) {
+   /* eslint-disable */
+  setMenuList(route: any) {
     const menuList: any = [];
-    if (routeArr?.length) {
-      routeArr.forEach((item: any) => {
-        const route = routeList.find((res: any) => item.name == res.name);
-        if (route) {
-          item.meta = route.meta;
-          item.name = route.name;
-          item.path = route.path;
-          menuList.push(item);
-          this.setMenuList(item.children, routeList);
+    if (route && route.children && route.children.length) {
+      route.children.forEach((item: any) => {
+        // 获取菜单的路由
+        if (item.meta.isMenu) {
+          const routeObj = {
+            meta: item.meta,
+            name: item.name,
+            path: item.path,
+            children: this.setMenuList(item)
+          };
+          menuList.push(routeObj);
         }
       });
     }
     return menuList;
   },
   getMenuList() {
-    const routeList = router.getRoutes();
-    const route = this.setMenuList(store.getters.routeMenuTreeArr, routeList);
+    const routeList = useRouter().getRoutes();
+    const routeData: any = routeList.find((row: any) => {
+      return row.name === "app";
+    });
+    const route = this.setMenuList(routeData);
     return route;
   }
 };

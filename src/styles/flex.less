@@ -2,6 +2,14 @@
   display: flex;
 }
 
+.flex-box {
+  display: flex;
+}
+
+.flex1 {
+  flex: 1;
+}
+
 .flex-align {
   align-items: center;
 
@@ -34,6 +42,12 @@
 
 .flex-center {
   &:extend(.flex-align, .flex-justify-center);
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .flex-wrap {
