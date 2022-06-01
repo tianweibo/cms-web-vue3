@@ -1,6 +1,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require("path");
 const webpack = require('webpack')
+const WebpackBar = require('webpackbar')
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
+const smwp = new SpeedMeasurePlugin()
+const Happypack = require('happypack')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserJSPlugin=require('terser-webpack-plugin');
@@ -57,8 +61,6 @@ module.exports = {
       })
     )
     //config.resolve.alias.set("@", path.resolve("src"));
-    
-    
     if(isAnalyzeMode){
       config.plugins.push(
         new TerserJSPlugin({
@@ -66,7 +68,7 @@ module.exports = {
             parallel: true,    //使用多进程并发运行
             terserOptions: {    //Terser 压缩配置
               output: { comments: false },
-              compress: { drop_console: true }   // 去除console
+              compress: { dropConsole: true }   // 去除console
             },
             //extractComments: true,    //将注释剥离到单独的文件中
         })
@@ -86,6 +88,10 @@ module.exports = {
         })
       )
     } 
+    config.plugins.push(
+      new WebpackBar()
+    )
+    config.plugins.push(new SpeedMeasurePlugin())
     config.optimization.splitChunks = {
       maxInitialRequests: Infinity,
       minSize: 300 * 1024,

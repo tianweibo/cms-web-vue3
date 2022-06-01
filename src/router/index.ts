@@ -33,9 +33,6 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
     path: "/app",
     name: "app",
     redirect: "/app/marketing",
-    // meta: {
-    //   roles: ['editor'] // 方法二的权限匹配路由的方式，前端在meta中写死哪些角色拥有这个路由
-    // },
     component: () => import("@/components/layouts/layout/index.vue"),
     children: [
       {
@@ -45,74 +42,9 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
           title: "营销活动",
           isMenu: true
         },
-        redirect: "/app/marketing/exchange",
+        redirect: "/app/marketing/interaction",
         component: () => import("@/components/layouts/template/index.vue"),
         children: [
-          {
-            path: "exchange",
-            name: "Exchange",
-            meta: {
-              title: "兑换活动",
-              icon: "",
-              isMenu: true
-            },
-            redirect: "/app/marketing/exchange/list",
-            component: () => import("@/components/layouts/template/index.vue"),
-            children: [
-              {
-                path: "list",
-                name: "ExchangeList",
-                meta: {
-                  title: "兑换管理",
-                  icon: "",
-                  isMenu: true
-                },
-                component: () => import("@/pages/exchange/sub-pages/list/index.vue"),
-                children: []
-              },
-              {
-                path: "record",
-                name: "ExchangeRecord",
-                meta: {
-                  title: "兑换记录",
-                  icon: "",
-                  isMenu: false
-                },
-                component: () => import("@/pages/exchange/sub-pages/record/index.vue"),
-                children: []
-              },
-              {
-                path: "create",
-                name: "ExchangeCreate",
-                meta: {
-                  title: "创建兑换活动",
-                  icon: "",
-                  isMenu: false
-                },
-                component: () => import("@/pages/exchange/sub-pages/create/index.vue")
-              },
-              {
-                path: "statistics",
-                name: "ExchangeStatistics",
-                meta: {
-                  title: "查看数据统计",
-                  icon: "",
-                  isMenu: false
-                },
-                component: () => import("@/pages/exchange/sub-pages/statistics/index.vue")
-              },
-              {
-                path: "analysis",
-                name: "ExchangeAnalysis",
-                meta: {
-                  title: "兑换分析",
-                  icon: "",
-                  isMenu: true
-                },
-                component: () => import("@/pages/user/user1/index.vue")
-              }
-            ]
-          },
           {
             path: "interaction",
             name: "Interaction",
@@ -153,28 +85,19 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
                   isMenu: false
                 },
                 component: () => import("@/components/layouts/template/index.vue"),
-                redirect: "/app/marketing/apps/bigwheel",
+                redirect: "/app/marketing/apps/demo",
                 children: [
+                  
                   {
-                    path: "bigwheel",
-                    name: "BigWheel",
+                    path: "demo",
+                    name: "demo",
                     meta: {
-                      title: "大转盘",
+                      title: "演示",
                       icon: "",
                       isMenu: false
                     },
-                    component: () => import("@/pages/interaction/apps/big-wheel/index.vue")
+                    component: () => import("@/pages/interaction/apps/demo/index.vue")
                   },
-                  {
-                    path: "sign",
-                    name: "SignIn",
-                    meta: {
-                      title: "签到",
-                      icon: "",
-                      isMenu: false
-                    },
-                    component: () => import("@/pages/interaction/apps/sign-in/index.vue")
-                  }
                   // 一个个互动，依次类推
                 ]
               },

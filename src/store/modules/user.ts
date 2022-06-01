@@ -49,7 +49,6 @@ const actions = {
           if (!data) {
             throw "验证失败，请重新登录";
           }
-          // debugger
           const { roles, name, avatar } = data;
           const account = Storage.get("ACCOUNT");
           // 管理员可不做权限校验
@@ -59,10 +58,8 @@ const actions = {
               throw "无权限,请联系管理员添加权限!";
             }
           }
-          console.log(roles);
           
           const newRouters = filierRouters(roles);
-          console.log(newRouters)
           resetRouterByName(newRouters);
           commit("SET_ROUTERS", newRouters || []);
           commit("SET_ROLES", roles || []);
