@@ -195,15 +195,15 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref, computed } from "vue";
-import ColorPicker from "../common/ColorPicker.vue";
-import uploadImg from "./UploadImg.vue";
+import ColorPicker from "./color-picker.vue";
+import uploadImg from "./upload-img.vue";
 //import ShadowPicker from "../ShadowPicker.vue";
-import useComponentCommon from "../../../hocks/useComponentCommon";
+import useComponentCommon from "../../../hocks/use-component-common";
 import {
   transformToComponentProps,
   btn,
   //btnStylePropNames
-} from "@/store/dataType/common";
+} from "@/store/data-type/common";
 const defaultProps = transformToComponentProps(btn);
 
 // array that contains style props
@@ -290,7 +290,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-@import "../common/Rcommon.less";
+@import "../common/r-common.less";
 .height-50{
  height:50px;
  line-height: 50px;

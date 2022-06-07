@@ -18,14 +18,14 @@
   </ul>
 </template>
 <script lang="ts">
-import uploadImg from "./UploadImg.vue";
+import uploadImg from "./upload-img.vue";
 import { defineComponent, computed } from "vue";
-import useComponentCommon from "../../../hocks/useComponentCommon";
+import useComponentCommon from "../../../hocks/use-component-common";
 import {
   transformToComponentProps,
   img,
   imgStylePropNames
-} from "@/store/dataType/common";
+} from "@/store/data-type/common";
 const defaultProps = transformToComponentProps(img);
 export default defineComponent({
   name: "r-image",
@@ -51,7 +51,7 @@ export default defineComponent({
       }
     });
     let theShadow = computed(() => props.boxShadow);
-    let theBorderRadius = computed(() => parseInt(props.borderRadius));
+    //let theBorderRadius = computed(() => parseInt(props.borderRadius));
     const changeValue = (e: any, param: string) => {
       let obj = {
         key: param,
@@ -73,7 +73,7 @@ export default defineComponent({
       handleClick,
       theSrc,
       changeValue,
-      theBorderRadius,
+      //theBorderRadius,
       theShadow,
       imageUrl
     };
@@ -82,5 +82,5 @@ export default defineComponent({
 </script>
 
 <style scoped>
-@import "../common/Rcommon.less";
+@import "../common/r-common.less";
 </style>

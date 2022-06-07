@@ -49,7 +49,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, computed } from "vue";
-import ColorPicker from "./ColorPicker.vue";
+import ColorPicker from "./color-picker.vue";
 
 export default defineComponent({
   name: "shadow-picker",

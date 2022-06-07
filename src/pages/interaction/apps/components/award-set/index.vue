@@ -122,12 +122,12 @@
 <script lang="ts">
 import { message } from 'ant-design-vue';
 import { defineComponent, onMounted, ref, computed,PropType,watch} from 'vue';
-import uploadImg from "../../components/decorate/common/UploadImg.vue";
-import choiceGift from "./choiceGift.vue"
+import uploadImg from "../../components/decorate/common/upload-img.vue";
+import choiceGift from "./award-choice.vue"
 import {
   AwardLevelObject,
   AwardObject,
-} from "./dataType";
+} from "./data-type";
 export default defineComponent({
   emits: ["changeGift","onSubmit"],
   components:{

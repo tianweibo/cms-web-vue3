@@ -1,11 +1,11 @@
 import { v4 as uuidv4 } from "uuid";
-import {ComponentData} from "../dataType/common";
+import {ComponentData} from "../data-type/common";
 import {
   backImg,
   text,
   title,
   btn
-} from "../dataType/demo";
+} from "../data-type/demo";
 export const demoData: ComponentData[] = [
   {
     id: uuidv4(),

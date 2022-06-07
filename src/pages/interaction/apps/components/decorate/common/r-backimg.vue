@@ -36,10 +36,10 @@
 import { defineComponent, ref, computed } from "vue";
 //import ColorPicker from "../common/ColorPicker.vue";
 //import useComponentCommon from '../../hocks/useComponentCommon'
-import { transformToComponentProps, backImg } from "@/store/dataType/common";
+import { transformToComponentProps, backImg } from "@/store/data-type/common";
 const defaultProps = transformToComponentProps(backImg);
 // array that contains style props
-import uploadImg from "./UploadImg.vue";
+import uploadImg from "./upload-img.vue";
 export default defineComponent({
   name: "l-image",
   props: {
@@ -86,5 +86,5 @@ export default defineComponent({
 </script>
 
 <style scoped>
-@import "../common/Rcommon.less";
+@import "../common/r-common.less";
 </style>

@@ -14,9 +14,9 @@ export interface CommonComponentProps {
   borderStyle: string;
   borderColor: string;
   borderWidth: string;
-  borderRadius: string;
+  borderRadius: any;
   // shadow and opacity
-  boxShadow: string;
+  boxShadow: any;
   opacity: string;
   // position and x,y
   position: string;

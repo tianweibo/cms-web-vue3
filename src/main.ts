@@ -6,7 +6,7 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import Antd from './configAntd'
+import Antd from './config-antd'
 import Filters from "./filters/index";
 //import Antd from "ant-design-vue/es"; // 因为配置了按需加载导致按需加载和全量加载引入文件路径不一致
 import "ant-design-vue/dist/antd.less"; // or 'ant-design-vue/dist/antd.less'

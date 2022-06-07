@@ -1,5 +1,5 @@
 import { Module, Mutation } from "vuex";
-import {EditorProps,GlobalDataProps} from "../dataType/common";
+import {EditorProps,GlobalDataProps} from "../data-type/common";
 import {demoData} from "../data/demo"
 
 const demo: Module<EditorProps, GlobalDataProps> = {

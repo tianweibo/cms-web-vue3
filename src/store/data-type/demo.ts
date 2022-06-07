@@ -14,7 +14,7 @@ export const title: LImage = {
   src: "http://enbrands-2.oss-cn-shanghai.aliyuncs.com/user/968c157ca7bdbb8916f254b43ef1312e.png",
   srcDefault: "http://enbrands-2.oss-cn-shanghai.aliyuncs.com/user/968c157ca7bdbb8916f254b43ef1312e.png",
   boxShadow: "",
-  borderRadius: "",
+  borderRadius: "1",
   zIndex: 8
 }; 
 

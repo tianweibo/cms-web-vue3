@@ -50,17 +50,17 @@ import {
   computed,
   ref,
 } from "vue";
-import {ComponentData,GlobalDataProps} from "@/store/dataType/common";
-import uploadImg from "../components/decorate/common/UploadImg.vue";
-import DragContent from "../components/decorate/DragContent.vue";
-import LText from "../components/decorate/common/LText.vue";
-import LImage from "../components/decorate/common/LImage.vue";
-import LBackimg from "../components/decorate/common/LBackimg.vue";
-import LBtn from "../components/decorate/common/LBtn.vue";
-import RText from "../components/decorate/common/RText.vue";
-import RBtn from "../components/decorate/common/RBtn.vue";
-import RImg from "../components/decorate/common/RImg.vue";
-import RBackimg from "../components/decorate/common/RBackimg.vue";
+import {ComponentData,GlobalDataProps} from "@/store/data-type/common";
+import uploadImg from "../components/decorate/common/upload-img.vue";
+import DragContent from "../components/decorate/drag-content.vue";
+import LText from "../components/decorate/common/l-text.vue";
+import LImage from "../components/decorate/common/l-image.vue";
+import LBackimg from "../components/decorate/common/l-backimg.vue";
+import LBtn from "../components/decorate/common/l-btn.vue";
+import RText from "../components/decorate/common/r-text.vue";
+import RBtn from "../components/decorate/common/r-btn.vue";
+import RImg from "../components/decorate/common/r-img.vue";
+import RBackimg from "../components/decorate/common/r-backimg.vue";
 import { pickBy } from "lodash-es";
 import { useStore } from "vuex";
 export default defineComponent({

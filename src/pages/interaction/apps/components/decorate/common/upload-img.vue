@@ -146,7 +146,7 @@ export default defineComponent({
         context.emit("imageUrl", obj);
         return;
       }
-      let theContent = null;
+      let theContent: any = null;
       let theUrl = null;
       if (newFileList.length == 0) {
         theUrl = null

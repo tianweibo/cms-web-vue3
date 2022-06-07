@@ -105,13 +105,13 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref, computed } from "vue";
-import ColorPicker from "../common/ColorPicker.vue";
-import useComponentCommon from "../../../hocks/useComponentCommon";
+import ColorPicker from "./color-picker.vue";
+import useComponentCommon from "../../../hocks/use-component-common";
 import {
   transformToComponentProps,
   text,
   textStylePropNames
-} from "@/store/dataType/common";
+} from "@/store/data-type/common";
 const defaultProps = transformToComponentProps(text);
 
 // array that contains style props
@@ -167,5 +167,5 @@ export default defineComponent({
 </script>
 
 <style scoped>
-@import "../common/Rcommon.less";
+@import "../common/r-common.less";
 </style>

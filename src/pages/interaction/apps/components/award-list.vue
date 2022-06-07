@@ -77,7 +77,7 @@ const columns = [
 ];
 import {
   UserObject,
-} from "./awardSet/dataType";
+} from "./award-set/data-type";
 
 interface AwardLevelObject {
   label: string;

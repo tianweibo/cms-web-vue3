@@ -78,7 +78,7 @@ interface FormState {
 import {
   GiftTypeObj,
   GiftObj,
-} from "./dataType";
+} from "./data-type";
 export default defineComponent({
   emits: ["handChoice", "closeDialog"],
   props: {},
