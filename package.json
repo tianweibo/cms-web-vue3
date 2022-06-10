@@ -29,9 +29,6 @@
     "sort": "npx sort-package-json"
   },
   "config": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    },
     "commitizen": {
       "path": "node_modules/cz-customizable"
     }
