@@ -5,7 +5,7 @@ const WebpackBar = require('webpackbar')
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 const smwp = new SpeedMeasurePlugin()
 const Happypack = require('happypack')
-const CompressionWebpackPlugin = require('compression-webpack-plugin')
+//const CompressionWebpackPlugin = require('compression-webpack-plugin')
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserJSPlugin=require('terser-webpack-plugin');
 const config = require("./src/services/config");
@@ -79,7 +79,7 @@ module.exports = {
         })
       )
     }
-    if (isProduction) {
+    /* if (isProduction) {
       config.plugins.push(
         new CompressionWebpackPlugin({
           algorithm:'gzip',
@@ -87,7 +87,7 @@ module.exports = {
           threshold: 10240,
         })
       )
-    } 
+    } */ 
     config.plugins.push(
       new WebpackBar()
     )

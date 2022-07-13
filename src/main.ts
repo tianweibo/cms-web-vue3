@@ -3,6 +3,8 @@ import ComBreadcrumb from "./components/breadcrumb/index.vue";
 import Focus from "./directive/focus";
 import Permission from "./directive/permission";
 import { createApp } from "vue";
+import InteracteCom from "interacte-com"
+import 'interacte-com/dist/bundle.css'
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
@@ -23,6 +25,7 @@ app.directive("focus", Focus);
 app.directive("permission", Permission);
 app
   .use(Antd)
+  .use(InteracteCom)
   .use(router)
   .use(store)
   .component("Pagination", ComPagination)

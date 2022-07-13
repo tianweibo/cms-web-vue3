@@ -1,11 +1,28 @@
 /* eslint-disable */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 import Login from "@/pages/auth/login/index.vue";
+import Home from "@/pages/home/home.vue"
 import storage from "@/utils/storage";
 
 // 方法三： 通过后台传来的 router过滤
 // 如果不需要前端控制路由权限，直接将routes和asyncRoutes写在一起。
 export const constantRoutes: Array<RouteRecordRaw> = [
+  {
+    path: "/login",
+    name: "Login",
+    component: Login,
+    meta: {
+      title: "登录"
+    }
+  },
+  {
+    path: "/home",
+    name: "Home",
+    component: Home,
+    meta: {
+      title: "主页面"
+    }
+  },
   {
     path: "/login",
     name: "Login",

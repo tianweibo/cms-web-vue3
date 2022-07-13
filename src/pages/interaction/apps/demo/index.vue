@@ -1,5 +1,25 @@
 <template>
   <div class="content clearfix">
+   <!--  <choiceGift 
+      @closeDialog="closeDialog"
+      @handChoice="getGift"></choiceGift>  -->
+      <super-form :formList='formList' ref="theSuperForm"></super-form>
+   <!--  <choice-gift1 
+      @closeDialog="closeDialog"
+      @handChoice="getGift">
+   </choice-gift1>  -->
+
+  <upload-image 
+    :size="50"
+    :space="10"
+    :para="src"
+    :textpos="'common'"
+    @imageUrl="imageUrl"
+    :picUrl='xxxx'>
+  </upload-image>
+  
+   <l-image1></l-image1>
+   
     <div
       class="content-left fl"
       id="canvas-area"
@@ -60,6 +80,7 @@ import "./index.less";
 import { defineComponent, computed, ref } from "vue";
 import { ComponentData, GlobalDataProps } from "@/store/data-type/common";
 import uploadImg from "../components/decorate/common/upload-img.vue";
+import choiceGift from "../components/ChoiceGift.vue";
 import DragContent from "../components/decorate/drag-content.vue";
 import LText from "../components/decorate/common/l-text.vue";
 import LImage from "../components/decorate/common/l-image.vue";
@@ -74,6 +95,7 @@ import { useStore } from "vuex";
 export default defineComponent({
   components: {
     uploadImg,
+    choiceGift,
     DragContent,
     LText,
     RText,
@@ -84,8 +106,8 @@ export default defineComponent({
     LBtn,
     RBtn
   },
-
-  setup() {
+  emits: ["change"],
+  setup(props,context) {
     const store = useStore<GlobalDataProps>();
     const backImgProps = computed(() => store.getters["demo/getBackImgProps"]);
     const currentElement = computed<ComponentData | null>(
@@ -103,6 +125,19 @@ export default defineComponent({
     const changeType = (e: any) => {
       store.commit("demo/setActive", e);
       theId.value = e;
+    };
+    const getGift=(val: any)=>{
+      console.log('getGift')
+    };
+    const closeDialog=()=>{
+      console.log('close')
+    };
+    const imageUrl = (data: { para: string; name: string }) => {
+      let obj = {
+        key: data.para,
+        value: data.name
+      };
+      context.emit("change", obj);
     };
     const changedata = (obj: any) => {
       let theid: any = null;
@@ -180,9 +215,130 @@ export default defineComponent({
       const valuesArr = Object.values(updatedData).map(v => v + "px");
       store.commit("demo/updateComponent", { key: keysArr, value: valuesArr, id });
     };
+    const formList=ref({
+          "aliasName": "Apache安装",
+          "formSource": "product",
+          "tables": [
+            {
+              "tableName": "apache安装配置",
+              "tableUuid": "4344d74b-51c4-45f4-b1c8-aa103d24ed49",
+              "ascOrder": 0,
+              "isColumn": 0,
+              "infos": [
+                {
+                  "paraKey": "actMess",
+                  "paraName": "活动名称",
+                  "msg":"活动名称的范围是3-20",
+                  "placeholder":'请输入活动名称',
+                  "paraUnit": null,
+                  "formType": "the-input",
+                  "regularText": "/^.{3,20}$/",
+                  "sourceJson": null,
+                  "isRequired": 1,
+                  "isExist": true,
+                  "value": ''
+                },
+                {
+                  "paraKey": "actTime",
+                  "paraName": "活动时间",
+                  "placeholder":'请输入参数',
+                  "msg":"请输入活动的起止时间",
+                  "paraUnit": null,
+                  "formType": "range-picker",
+                  "regularText": "",
+                  "sourceJson": null,
+                  "isRequired": 1,
+                  "isExist": true,
+                  "value": null
+                },
+                {
+                  "paraKey": "pic",
+                  "paraName": "活动图片",
+                  "placeholder":'请输入参数',
+                  "msg":null,
+                  "paraUnit": "MB",
+                  "formType": "the-upload",
+                  "regularText": "",
+                  "sourceJson":null,
+                  "isRequired": 0,
+                  "isExist": true,
+                  "value": null
+                },
+                {
+                  "paraKey": "ruleType",
+                  "paraName": "活动规则",
+                  "msg":null,
+                  "placeholder":'请输入参数',
+                  "paraUnit": "MB",
+                  "formType": "the-radio",
+                  "regularText": "",
+                  "sourceJson": [{value:1,label:'文本规则'},{value:2,label:'图文规则'}],
+                  "isRequired": 0,
+                  "isExist": true,
+                  "value": 2,
+                }, {
+                  "paraKey": "ruleBaseMap",
+                  "paraName": "规则底图",
+                  "msg":null,
+                  "placeholder":'请输入参数',
+                  "paraUnit": "MB",
+                  "formType": "the-upload",
+                  "regularText": "",
+                  "sourceJson":null,
+                  "isRequired": 0,
+                  "isExist": true,
+                  "value": null,
+                },
+                {
+                  "paraKey": "ruleContent",
+                  "paraName": "规则图片",
+                  "placeholder":'请输入参数',
+                  "msg":null,
+                  "paraUnit": "MB",
+                  "formType": "the-upload",
+                  "regularText": "",
+                  "sourceJson":null,
+                  "isRequired": 0,
+                  "isExist": false,
+                  "value": null,
+                },
+                {
+                  "paraKey": "ruleContent",
+                  "paraName": "规则内容",
+                  "placeholder":'请输入参数',
+                  "msg":'规则内容不能为空',
+                  "paraUnit": "MB",
+                  "formType": "the-textarea",
+                  "regularText": "",
+                  "sourceJson":null,
+                  "isRequired": 1,
+                  "isExist": true,
+                  "value": 1
+                },
+                {
+                  "paraKey": "ifDisplay",
+                  "paraName": "推广方式",
+                  "msg":null,
+                  "placeholder":'请输入参数',
+                  "paraUnit": "MB",
+                  "formType": "the-select",
+                  "regularText": "",
+                  "sourceJson":[{value:1,label:'公开推广'},{value:2,label:'自主推广'}],
+                  "isRequired": 0,
+                  "isExist": true,
+                  "value": 1,
+                }
+              ]
+            }
+          ]
+        })
     return {
+      imageUrl,
+      formList,
       changedata,
       onSubmit,
+      getGift,
+      closeDialog,
       backImgProps,
       lComponents,
       rComponents,
