@@ -1,8 +1,9 @@
-import SideBar from './sideBar.vue'
-import NavBar from './navBar.vue'
+import SideBar from './sideBar/index.vue'
+import TheHeader from './header/index.vue'
 import AppMain from './appMain.vue'
-import UseTab from './useTab.vue'
-import ThemeChange from './themeChange.vue'
 import MenuTab from './menuTab.vue'
+import BreadCrumb from './breadCrumb.vue'
+import ThemeChange from './header/themeChange.vue'
+import screenFull from './header/screenFull.vue'
 
-export { SideBar, NavBar, AppMain,UseTab,MenuTab,ThemeChange }
+export { SideBar,BreadCrumb, TheHeader, AppMain,MenuTab,ThemeChange,screenFull }

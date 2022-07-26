@@ -154,10 +154,6 @@ export default defineComponent({
          awardList.value=newValue.awardLists;
        }
      }); 
-      /* if(props.awardLists && props.awardLists.length!=0){
-        debugger
-        awardList.value=props.awardLists.filter(item=>item.level!=null)
-      }  */ 
      const activeKeyCollapse = ref(["1"]);
      let theIndex=ref(0);
     let dialogTableVisible=ref(false)

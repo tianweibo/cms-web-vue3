@@ -1,7 +1,7 @@
 <template>
-  <div>
-    我是侧边栏
-  </div>
+  <span>
+   GroupCreate
+  </span>
 </template>
 
 <script lang="ts">
@@ -9,7 +9,7 @@ import { defineComponent, reactive, ref } from "vue";
 
 
 export default defineComponent({
-  name: "SideBar",
+  name: "GroupCreate",
   setup(_: any, ctx: any) {
    
     return { 

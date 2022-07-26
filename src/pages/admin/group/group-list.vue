@@ -1,7 +1,7 @@
 <template>
-  <div>
-   右侧顶部小功能
-  </div>
+  <span>
+   GroupList
+  </span>
 </template>
 
 <script lang="ts">
@@ -9,7 +9,7 @@ import { defineComponent, reactive, ref } from "vue";
 
 
 export default defineComponent({
-  name: "NavBar",
+  name: "GroupList",
   setup(_: any, ctx: any) {
    
     return { 

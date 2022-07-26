@@ -2,12 +2,13 @@
 
 import { Avatar, Select,Button, Spin, Modal, Drawer, Card, Tag,Carousel,Collapse,
     Layout, ConfigProvider,Tabs, Menu, Row, Col, Checkbox,Upload,DatePicker,Table,
-    Form, Dropdown,Input,InputNumber, Slider, Radio } from 'ant-design-vue'
+    Form, Dropdown,Input,Switch,InputNumber, Slider, Radio } from 'ant-design-vue'
+  const {SubMenu} =Menu
   import { App } from 'vue'
   
   const components = [
     Avatar,Button,Spin,Modal,Drawer,Card, Card.Meta,Tag,
-    Layout,Carousel,
+    Layout,Carousel,SubMenu,Switch,
     Table,ConfigProvider,
     Radio,Select,
     Select.Option,
@@ -25,7 +26,9 @@ import { Avatar, Select,Button, Spin, Modal, Drawer, Card, Tag,Carousel,Collapse
     Dropdown.Button,
     Input,
     InputNumber,
+    
     Input.TextArea,
+    Input.Search,
     Slider,
     Radio.Group,
     Radio.Button

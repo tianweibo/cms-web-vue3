@@ -1,11 +1,24 @@
 /* eslint-disable */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 import Login from "@/pages/auth/login/index.vue";
-import Home from "@/pages/home/home.vue"
+import Home from "@/pages/home/home1.vue"
 import storage from "@/utils/storage";
-
+import homeRouter from './home-router'
+console.log(homeRouter,'router')
 // 方法三： 通过后台传来的 router过滤
 // 如果不需要前端控制路由权限，直接将routes和asyncRoutes写在一起。
+/* {
+  component:'',
+  meta:{
+    blueBaseColor:'',
+    icon:'',
+    permission:['查询所有日志']，
+    title:'林间有风'，
+    type:'view'
+  },
+  name:Symbol(about),
+  path:'/about'
+} */
 export const constantRoutes: Array<RouteRecordRaw> = [
   {
     path: "/login",
@@ -16,20 +29,13 @@ export const constantRoutes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/home",
+    path: "/",
     name: "Home",
     component: Home,
     meta: {
       title: "主页面"
-    }
-  },
-  {
-    path: "/login",
-    name: "Login",
-    component: Login,
-    meta: {
-      title: "登录"
-    }
+    },
+    children:[...homeRouter]
   },
   {
     path: "/401",
@@ -46,94 +52,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
 ];
 
 export const asyncRoutes: Array<RouteRecordRaw> = [
-  {
-    path: "/app",
-    name: "app",
-    redirect: "/app/marketing",
-    component: () => import("@/components/layouts/layout/index.vue"),
-    children: [
-      {
-        path: "marketing",
-        name: "Marketing",
-        meta: {
-          title: "营销活动",
-          isMenu: true
-        },
-        redirect: "/app/marketing/interaction",
-        component: () => import("@/components/layouts/template/index.vue"),
-        children: [
-          {
-            path: "interaction",
-            name: "Interaction",
-            meta: {
-              title: "互动活动",
-              icon: "",
-              isMenu: true
-            },
-            redirect: "/app/marketing/interaction/list",
-            component: () => import("@/components/layouts/template/index.vue"),
-            children: [
-              {
-                path: "list",
-                name: "InteractionList",
-                meta: {
-                  title: "我的互动",
-                  icon: "",
-                  isMenu: true
-                },
-                component: () => import("@/pages/interaction/list/index.vue")
-              },
-              {
-                path: "center",
-                name: "InteractionCenter",
-                meta: {
-                  title: "互动中心",
-                  icon: "",
-                  isMenu: true
-                },
-                component: () => import("@/pages/interaction/center/index.vue")
-              },
-              {
-                path: "apps",
-                name: "InteractionApps",
-                meta: {
-                  title: "",
-                  icon: "",
-                  isMenu: false
-                },
-                component: () => import("@/components/layouts/template/index.vue"),
-                redirect: "/app/marketing/apps/demo",
-                children: [
-                  
-                  {
-                    path: "demo",
-                    name: "demo",
-                    meta: {
-                      title: "演示",
-                      icon: "",
-                      isMenu: false
-                    },
-                    component: () => import("@/pages/interaction/apps/demo/index.vue")
-                  },
-                  // 一个个互动，依次类推
-                ]
-              },
-              {
-                path: "analysis",
-                name: "InteractionAnalysis",
-                meta: {
-                  title: "数据分析",
-                  icon: "",
-                  isMenu: false
-                },
-                component: () => import("@/pages/interaction/analysis/index.vue")
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+ 
 ];
 
 const router = createRouter({

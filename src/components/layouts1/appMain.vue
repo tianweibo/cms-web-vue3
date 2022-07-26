@@ -1,7 +1,13 @@
 <template>
-  <div>
-    我是主体
-  </div>
+  <section class="container">
+    <div class="wrapper" id="wrapper">
+      <router-view v-slot="{ Component }" :key="$route.fullPath">
+        <transition appear name="fade-transform" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
+    </div>
+  </section>
 </template>
 
 <script lang="ts">
@@ -19,9 +25,11 @@ export default defineComponent({
 });
 </script>
 <style lang="less" scoped>
-
-
-</style>
-<style lang="less">
-
+.container {
+  .wrapper {
+    width: 100%;
+    height: 100%;
+    text-align: left;
+  }
+}
 </style>

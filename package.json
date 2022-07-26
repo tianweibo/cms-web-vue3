@@ -49,14 +49,16 @@
     ]
   },
   "dependencies": {
+    "@enbrandsfe/buried_point": "^1.0.13",
+    "@enbrandsfe/interacte_com_vue3": "^1.0.4",
     "ant-design-vue": "^2.2.0",
     "axios": "^0.21.1",
     "clone": "^2.1.2",
     "core-js": "^3.6.5",
-    "interacte-com": "^1.0.5",
     "md5": "^2.3.0",
     "nprogress": "^0.2.0",
     "qrcode.vue": "^3.3.3",
+    "screenfull": "^4.2.0",
     "vue": "^3.2.0",
     "vue-clipboard3": "^2.0.0",
     "vue-color-input": "^1.0.6",
